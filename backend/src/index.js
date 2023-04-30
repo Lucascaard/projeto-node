@@ -6,7 +6,7 @@ const cors = require('cors');
 
 require("./config/dbConfig");
 
-app.use(cors({ origin: 'http://127.0.0.1:5501' }));
+app.use(cors({ origin: 'http://127.0.0.1:5500' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
