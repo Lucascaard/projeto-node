@@ -1,0 +1,103 @@
+:root {
+  --cor-do-background:#cccccc62;
+  --degrade: linear-gradient(to bottom, rgba(215, 212, 212, 0.826), rgba(128, 128, 128, 0.444));
+}
+
+
+section {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-image: var(--degrade);
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    text-align:center;
+  }
+
+  h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  body{
+    background:var(--cor-do-background);
+    
+  }
+
+  li{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    align-items: left;
+    text-align: left;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  a {
+    color: #000; /* cor do texto normal */
+    position: relative; /* para usar a posição absoluta no elemento filho */
+    text-decoration: none; /* remove o sublinhado */
+  }
+  
+  a::before {
+    content: ""; /* cria um elemento antes do link */
+    position: absolute; /* posiciona o elemento em relação ao pai */
+    bottom: -2px; /* posiciona o elemento abaixo do texto */
+    left: 0; /* alinha o elemento à esquerda do pai */
+    width: 100%; /* faz o elemento ter a mesma largura do pai */
+    height: 2px; /* altura da linha */
+    background-color: #000; /* cor da linha */
+    transform: scaleX(0); /* inicia a animação com a linha invisível */
+    transition: transform 0.3s ease; /* define a animação */
+  }
+  
+  a:hover::before {
+    transform: scaleX(1); /* faz a linha aparecer na animação */
+  }
+  
+  /*CLIENTE*/
+
+  form#formCliente label {
+    display: inline-block;
+  width: 100px; /* largura desejada para o label */
+  margin-right: 10px; /* espaçamento entre o label e o input */
+  text-align: right; /* alinha o texto do label à direita */
+  }
+  
+  form#formCliente input {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.333);
+    display: inline-block;
+    width: 200px; /* largura desejada para o input */
+    margin-bottom: 10px;
+    height: 25px;
+  }
+
+  /* Estilo para os botões */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 80px;
+
+}
+
+/*Vendas*/
+
+form#FormVendas label {
+  display: inline-block;
+  width: 100px; /* largura desejada para o label */
+  margin-right: 10px; /* espaçamento entre o label e o input */
+  text-align: right; /* alinha o texto do label à direita */
+}
+
+form#FormVendas input {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.333);
+  display: inline-block;
+  width: 200px; /* largura desejada para o input */
+  margin-bottom: 10px;
+  height: 25px;
+}
