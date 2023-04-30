@@ -47,42 +47,62 @@ Exemplo
 Já no caso do front foi necessário criar uma função para enviar o formulário pro backend
 
 ```javaScript
-    const form = document.getElementById('formCliente');
+   //!Cadastro de Clientes
+const formCadastro = document.getElementById('formCliente');
+const cadastrar = document.getElementById("cadastrar");
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // evita o comportamento padrão do formulário
+cadastrar.addEventListener('click', (event) => {
+event.preventDefault(); // evita o comportamento padrão do formulário
 
-        //Tratando os dados
-        const idCliente = form.querySelector('input[name="idCliente"]').value;
-        const cpf = form.querySelector('input[name="cpf"]').value;
-        const nome = form.querySelector('input[name="nome"]').value;
+    //Tratando os dados
+  const idCliente = formCadastro.querySelector('input[name="idCliente"]');
+  const cpf = formCadastro.querySelector('input[name="cpf"]');
+  const nome = formCadastro.querySelector('input[name="nome"]');
 
-        if (!idCliente || !cpf || !nome) {
-            document.getElementById('resp').innerHTML = 'Preencha todos os campos obrigatórios';
-            return;
-        }
+  if (!idCliente.value || !cpf.value || !nome.value) {
+    if(!idCliente.value){
+      document.getElementById('resp').innerHTML = "Insira o ID do cliente";
+      idCliente.focus();
+      return;
+      } else if(!cpf.value){
+        document.getElementById('resp').innerHTML = "Insira o CPF!";
+        cpf.focus();
+        return;
+        } else{
+          document.getElementById("resp").innerHTML = "Insira o nome!";
+          nome.focus();
+          return;
+          }
+  } 
 
-        const formData = new FormData(form); // obtém os dados do formulário
+  const formDataCadastro = new FormData(formCadastro); // obtém os dados do formulário
 
-        const json = JSON.stringify(Object.fromEntries(formData)); // transforma os dados do formulário em um objeto JSON
+  const json = JSON.stringify(Object.fromEntries(formDataCadastro)); // transforma os dados do formulário em um objeto JSON
+    
+  fetch('http://localhost:8082/clientes', { //endereço absoluto da requisição
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: json // envia o objeto JSON para o servidor
+  })
+  .then(response => response.json()) // recebe a resposta da requisição e transforma em um json
+  .then(data => { // data recebe responde.json() ja formatado
+    console.log(data); // imprime a resposta do servidor no console do navegador
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => input.value = '');
+    document.querySelector('input[name="idCliente"]').focus();  
+    document.getElementById('resp').innerHTML = 'Cliente cadastrado com sucesso!';
 
-        fetch('http://localhost:8082/cliente', { //rota absoluta pro backend
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: json // envia o objeto JSON para o servidor
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // imprime a resposta do servidor no console do navegador
-            document.getElementById('resp').innerHTML = 'Cliente cadastrado com sucesso!';
-        })
-        .catch(error => {
-            console.error(error); // imprime o erro no console do navegador
-            document.getElementById('resp').innerHTML = 'Erro ao cadastrar cliente';
-        });
-    });
+  })
+  //error recebe o possível erro da requisição e trata
+  .catch(error => {
+    console.error(error); // imprime o erro no console do navegador
+    document.getElementById('resp').innerHTML = 'Erro ao cadastrar cliente';
+  });
+});
+
+
 
 ```
 
