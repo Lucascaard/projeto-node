@@ -1,5 +1,7 @@
-const Resumo = require("../models/clienteModel");
+const Cliente = require("../models/clienteModel");
 
+module.exports = {
+  async join(req, res) {
     const pipeline = [
       {
         $lookup: {
@@ -11,13 +13,15 @@ const Resumo = require("../models/clienteModel");
       },
     ];
 
-    module.exports =  {
-      async resumo() {
-        try{
-          const resumoJoin = await Resumo.aggregate(pipeline);
-          return resumoJoin;
-        } catch (error) {
-          console.log(`Erro ao consultar resumo ${error}`);
-        }
+    Cliente.aggregate(pipeline).exec((err, result) => {
+      if (err) {
+        return res.status(400).json(err);
       }
-    };
+        res.status(200).json(result); // resultado do join
+      });
+
+    }
+    
+  }
+
+    // Pesquisar sobre populate, relacionamentos de dados mongodb + node

@@ -9,6 +9,6 @@ const ResumoController = require("./controllers/resumoController");
 rotas.get("/", (req, res) => { res.send("Raiz Online"); });
 rotas.post("/clientes", ClienteController.create.bind(ClienteController));
 rotas.post("/vendas", VendaController.create.bind(VendaController));
-rotas.get("/resumo", ResumoController.resumo.bind(ResumoController));
+rotas.get("/resumo", ResumoController.join.bind(ResumoController));
 
 module.exports = rotas;
