@@ -35,9 +35,9 @@ module.exports = {
 
       // Retorna o resultado como uma resposta JSON
       res.json(result);
-    } catch (err) {
+    } catch (error) {
       // Se houver algum erro, imprime no console e retorna um erro 500 como resposta JSON
-      console.error(err);
+      console.error(error);
       res.status(500).json({ error: "Erro ao realizar o join" });
     }
   },
