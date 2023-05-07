@@ -6,7 +6,7 @@ const clienteModelSchema = new mongoose.Schema({
     nome: String,
     vendas: [
         {
-          type: mongoose.Schema.Types.Mixed,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "vendas",
         },
       ],

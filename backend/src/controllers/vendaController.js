@@ -23,7 +23,7 @@ module.exports = {
     },
 
     async read ( req, res) {
-        const vendasList = Venda.find();
+        const vendasList = await Venda.find();
         res.status(200).json({
             mensagem: "Resumo das vendas",
             resumo: vendasList

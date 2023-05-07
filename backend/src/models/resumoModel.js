@@ -7,9 +7,9 @@ const resumoModelSchema = new mongoose.Schema({
   vendas: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Vendas",
+      ref: "vendas",
     },
   ],
 });
 
-module.exports = resumoModel = mongoose.model("Resumo", resumoModelSchema);
+module.exports = resumoModel = mongoose.model("clientes", resumoModelSchema);
