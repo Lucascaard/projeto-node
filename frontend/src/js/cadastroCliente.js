@@ -26,6 +26,23 @@ cadastrar.addEventListener('click', (event) => {
           }
   } 
 
+  //Falta arrumar a validação de ID
+  //--------------------------------------------------------------------------------------
+  fetch("http://localhost:8082/resumo")
+  .then(response => response.json())
+  .then(data => {
+    // Armazena todos os IDs em um array
+    const arrayIDs = data.map(cliente => cliente.idCliente);
+
+    // Valida o ID informado
+    if (arrayIDs.includes(idCliente.value)) {
+      document.getElementById("resp").innerHTML = "ID já existe! Informe um ID diferente";
+      idCliente.focus();
+      return;
+    }
+  });
+  //--------------------------------------------------------------------------------------
+
   const formDataCadastro = new FormData(formCadastro); // obtém os dados do formulário
 
   const json = JSON.stringify(Object.fromEntries(formDataCadastro)); // transforma os dados do formulário em um objeto JSON
@@ -51,4 +68,3 @@ cadastrar.addEventListener('click', (event) => {
     document.getElementById('resp').innerHTML = 'Erro ao cadastrar cliente';
   });
 });
-
