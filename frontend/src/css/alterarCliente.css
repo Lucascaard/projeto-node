@@ -66,8 +66,7 @@
     cursor: pointer;
     position: relative;
     width: 100px;
-
-    left: 30px;
+    left: 86px;
     top: -10px;
   
   } 
@@ -76,8 +75,8 @@
     position: relative;
     width: 100px;
     margin: 5px;
-    left: 183px;
-    top: -10px;
+    left: -22px;
+    top: 28px;
   }
   hr{
     height: 3px;
@@ -111,13 +110,19 @@
 
     width: 350px;
     position: relative;
-    top :-15px;
+    top :10px;
   
   }
 
   #data button{
     position: relative;
-    left: 257px;
-    top: -47px;
+    left: 252px;
+    top: -17px;
+  }
+
+  #formUpdateCliente{
+    position: relative;
+    top: 2px;
+    left: 8px;
   }
   
