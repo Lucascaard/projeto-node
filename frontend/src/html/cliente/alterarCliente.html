@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/alterarCliente.css">
+    <title>Alteração de Cliente</title>
+</head>
+<body>
+    <main>
+        <section>
+            <form id="formUpdateCliente">
+                <label for="idDoCliente">ID: </label>
+                <input type="number" name="idCliente" placeholder="ID do cliente...">
+                <button type="submit" class="botoes" id="buscar">Buscar</button>
+                <button class="botoes" id="voltar"><a href="../cliente/menuCliente.html">Voltar</a></button>
+            </form>
+            <form id="data">
+                <label for="ID">ID: </label>
+                <input type="number" name="idCliente"><br>
+
+                <label for="cpf">CPF: </label>
+                <input type="number" name="cpf"><br>
+
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome"><br>
+
+                <button type="submit" id="salvar" class="botoes">Salvar</button>
+
+            </form>
+        </section>
+        <section>
+            <div id="resp">...</div>
+        </section>
+    </main>
+    <script src="../../js/alterarCliente.js"></script>
+</body>
+</html>

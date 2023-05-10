@@ -1,0 +1,123 @@
+:root {
+    --cor-do-background:#ffffff62;
+    --degrade: linear-gradient(to bottom, rgba(215, 212, 212, 0.912), rgba(128, 128, 128, 0.444));
+  }
+  
+  
+  section {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #cccccc;
+      border-radius: 10px;
+      background-image: var(--degrade);
+      box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+      text-align:center;
+    }
+  
+    label{
+      font-family:Arial, Helvetica, sans-serif;
+      font-style: italic;
+      text-align: left;
+
+    }
+  
+    input{
+      padding: 2px;
+      font-size: 20px;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.541);
+      margin-bottom: 8px;
+      align-items: left;
+      justify-content: left;
+    }
+    body{
+      background:var(--cor-do-background);
+      
+    }
+  
+    a {
+      color: #000; /* cor do texto normal */
+      position: relative; /* para usar a posição absoluta no elemento filho */
+      text-decoration: none; /* remove o sublinhado */
+    }
+    
+    a::before {
+      content: ""; /* cria um elemento antes do link */
+      position: absolute; /* posiciona o elemento em relação ao pai */
+      bottom: -2px; /* posiciona o elemento abaixo do texto */
+      left: 0; /* alinha o elemento à esquerda do pai */
+      width: 100%; /* faz o elemento ter a mesma largura do pai */
+      height: 2px; /* altura da linha */
+      background-color: #000; /* cor da linha */
+      transform: scaleX(0); /* inicia a animação com a linha invisível */
+      transition: transform 0.3s ease; /* define a animação */
+    }
+    
+    a:hover::before {
+      transform: scaleX(1); /* faz a linha aparecer na animação */
+    }
+  
+    /* Estilo para os botões */
+  .botoes {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    width: 100px;
+
+    left: 30px;
+    top: -10px;
+  
+  } 
+  
+  #voltar{
+    position: relative;
+    width: 100px;
+    margin: 5px;
+    left: 183px;
+    top: -10px;
+  }
+  hr{
+    height: 3px;
+  }
+
+  button #salvar{
+    background-color: aqua;
+    position: relative;
+    width: 100px;
+    margin: 5px;
+    left: 183px;
+    top: -10px;
+
+  }
+ 
+  #data label {
+    display: inline-block;
+    width: 58px; /* ou outro valor que você preferir */
+    /* outros estilos dos rótulos */
+
+  }
+  
+  #data input {
+    display: inline-block;
+    width: 270px; /* ou outro valor que você preferir */
+    vertical-align: middle;
+    /* outros estilos dos campos de entrada */
+  }
+
+  #data{
+
+    width: 350px;
+    position: relative;
+    top :-15px;
+  
+  }
+
+  #data button{
+    position: relative;
+    left: 257px;
+    top: -47px;
+  }
+  

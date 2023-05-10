@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const section = document.querySelector("section");
   
-    fetch("http://localhost:8082/resumo")
+    fetch("http://localhost:8082/clientes")
     .then(response => response.json())
     .then(data => {
       data.forEach(cliente => {
