@@ -5,20 +5,17 @@ const ClienteController = require("./controllers/clienteController");
 const VendaController = require("./controllers/vendaController");
 const ResumoController = require("./controllers/resumoController");
 
-//ROTAS DO CLIENTE
-rotas.get("/", (req, res) => { res.send("Raiz Online"); });
-
 //CLIENTE
-rotas.post("/clientes", ClienteController.create.bind(ClienteController));
-rotas.get("/clientes", ClienteController.read.bind(ClienteController));
-rotas.post("/clientes/:idCliente", ClienteController.update.bind(ClienteController));
-rotas.get("/consultar-clientes/:idCliente", ClienteController.readOne.bind(ClienteController));
-//rotas.delete("/clientes/:id", ClienteController.delete.bind(ClienteController));
+rotas.post("/clientes", ClienteController.create.bind(ClienteController)); // OK
+rotas.get("/clientes", ClienteController.read.bind(ClienteController)); // OK
+rotas.post("/clientes/:idCliente", ClienteController.update.bind(ClienteController)); // OK
+rotas.get("/consultar-clientes/:idCliente", ClienteController.readOne.bind(ClienteController)); // OK
+rotas.delete("/clientes/:idCliente", ClienteController.delete.bind(ClienteController)); // OK
 
 //VENDAS
-rotas.post("/vendas", VendaController.create.bind(VendaController));
+rotas.post("/vendas", VendaController.create.bind(VendaController)); // OK
 
 //RESUMO
-rotas.get("/resumo", ResumoController.join.bind(ResumoController));
+rotas.get("/resumo", ResumoController.join.bind(ResumoController)); //OK
 
 module.exports = rotas;

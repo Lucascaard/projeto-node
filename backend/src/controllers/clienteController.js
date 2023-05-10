@@ -33,42 +33,42 @@ module.exports = {
     return res.json(cliente);
   },
 
-  
-
   async update(req, res) {
-    const { id } = req.params;
-    const { idCliente, cpf, nome} = req.body;
-
-    const updateCliente = await Cliente.findOne({idCliente: id});
-      updateCliente.idCliente = idCliente;
-      updateCliente.cpf = cpf;
-      updateCliente.nome = nome;
-      
-    await updateCliente.save();
-    return res.status(200).json(updateCliente);
-
+    const { idCliente } = req.params;
+    const { cpf, nome } = req.body;
+  
+    try {
+      const cliente = await Cliente.findOneAndUpdate(
+        { idCliente },
+        { cpf, nome },
+        { new: true } // para retornar o documento atualizado
+      );
+      if (!cliente) {
+        return res.status(404).json({ msg: "Cliente não encontrado" });
+      }
+  
+      return res.status(200).json(cliente);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Erro no servidor");
+    }
   },
-
- async update( req , res ){
-        const { id } = req.params; 
-        const { Nome, Marca, Qtde, Validade } = req.body;
-
-        const updateProduto = await Produto.findOne({_id: id});
-            updateProduto.Nome = Nome;
-            updateProduto.Marca = Marca;
-            updateProduto.Qtde = Qtde;
-            updateProduto.Validade = Validade;
-        await updateProduto.save();
-
-        return res.json(updateProduto);
-    },
-
-    async delete( req, res ){
-        const { id } = req.params;
-        const ProdutoDeletado = await Produto.findByIdAndDelete({_id: id});
-        if(ProdutoDeletado){
-            const msg = {msg: "Produto deletado com sucesso!"};
-            return res.status(200).json({msg, ProdutoDeletado});
-        };
-    } 
+  
+  async delete(req, res) {
+    const { idCliente } = req.params;
+  
+    try {
+      const cliente = await Cliente.findOneAndDelete({ idCliente });
+      if (!cliente) {
+        return res.status(404).json({ msg: "Cliente não encontrado" });
+      }
+  
+      const msg = { msg: "Cliente deletado com sucesso!" };
+      return res.status(200).json({ msg, cliente });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Erro no servidor");
+    }
+  },
+  
   }
