@@ -1,15 +1,15 @@
-const formUpdateCliente = document.getElementById("formUpdateCliente");
-formUpdateCliente.addEventListener("submit", (evento) => {
+const formsUm = document.forms.formsUm;
+formsUm.addEventListener("submit", (evento) => {
     evento.preventDefault();
-    const idCliente = formUpdateCliente.querySelector('input[name="idCliente"]').value;
+    const { idCliente } = formsUm;
   
-    if (!idCliente) {
+    if (!idCliente.value) {
       document.getElementById("resp").textContent = "Insira o ID para continuar...";
       idCliente.focus();
       return;
     }
   
-    fetch(`http://localhost:8082/consultar-clientes/${idCliente}`)
+    fetch(`http://localhost:8082/consultar-clientes/${idCliente.value}`)
       .then((response) => response.json())
       .then((cliente) => {
         console.log(cliente);
@@ -18,10 +18,8 @@ formUpdateCliente.addEventListener("submit", (evento) => {
           document.getElementById("resp").textContent = "Cliente não encontrado.";
           return;
         }
-        //const data = document.getElementById("formUpdate");
-        const idCliente = document.querySelector('input[name="idCliente"]');
-        const cpf = document.querySelector('input[name="cpf"]');
-        const nome = document.querySelector('input[name="nome"]');
+        const formsData = document.forms.data;
+        const { idCliente, cpf, nome } = formsData;
               
         idCliente.value = cliente.idCliente;
         cpf.value = cliente.cpf;
@@ -32,16 +30,14 @@ formUpdateCliente.addEventListener("submit", (evento) => {
   });
   
   const salvar = document.getElementById("salvar");
-  const formUpdate = document.getElementById("data");
+  const formUpdate = document.forms.data;
 
   formUpdate.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const nome = document.getElementByName("nome");
-    const cpf = document.getElementByName("cpf");
-    const idCliente = document.getElementByName("idCliente").value;
+    const { idCliente, cpf, nome } = formUpdate;
 
-  if (!idCliente || !cpf.value || !nome.value) {
+  if (!idCliente.value || !cpf.value || !nome.value) {
     if(!idCliente.value){
       document.getElementById('resp').innerHTML = "Insira o ID do cliente";
       idCliente.focus();

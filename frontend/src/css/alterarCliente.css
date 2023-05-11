@@ -3,7 +3,6 @@
     --degrade: linear-gradient(to bottom, rgba(215, 212, 212, 0.912), rgba(128, 128, 128, 0.444));
   }
   
-  
   section {
       max-width: 500px;
       margin: 50px auto;
@@ -31,6 +30,7 @@
       align-items: left;
       justify-content: left;
     }
+
     body{
       background:var(--cor-do-background);
       
@@ -59,38 +59,26 @@
     }
   
     /* Estilo para os botões */
-  .botoes {
+
+  .fornUpdateCliente button{
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
     width: 100px;
-    left: 86px;
-    top: -10px;
-  
-  } 
-  
-  #voltar{
-    position: relative;
-    width: 100px;
+    display: block;
+    left: 80%;
     margin: 5px;
-    left: -22px;
-    top: 28px;
   }
+  
+  
+
+  
   hr{
     height: 3px;
   }
 
-  button #salvar{
-    background-color: aqua;
-    position: relative;
-    width: 100px;
-    margin: 5px;
-    left: 183px;
-    top: -10px;
-
-  }
  
   #data label {
     display: inline-block;
@@ -107,22 +95,10 @@
   }
 
   #data{
-
     width: 350px;
     position: relative;
     top :10px;
   
   }
 
-  #data button{
-    position: relative;
-    left: 252px;
-    top: -17px;
-  }
-
-  #formUpdateCliente{
-    position: relative;
-    top: 2px;
-    left: 8px;
-  }
   
