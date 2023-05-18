@@ -12,6 +12,8 @@
       background-image: var(--degrade);
       box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
       text-align:center;
+      align-items: flex-start;
+      height: fit-content;
     }
   
     label{
@@ -60,7 +62,19 @@
   
     /* Estilo para os botões */
 
-  .fornUpdateCliente button{
+    #formsUm{
+      position: relative;
+      left: -67px;
+      height: fit-content;
+    }
+
+    #formsUm button{
+      position: relative;
+      top: -46px;
+      left: 420px;
+    }
+
+   button{
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -71,9 +85,6 @@
     left: 80%;
     margin: 5px;
   }
-  
-  
-
   
   hr{
     height: 3px;
@@ -97,8 +108,12 @@
   #data{
     width: 350px;
     position: relative;
-    top :10px;
-  
+    top :-72px;
+    height: fit-content;
   }
 
-  
+  #data button{
+    position: relative;
+    top: -50px;
+    left: 353px;
+  }
