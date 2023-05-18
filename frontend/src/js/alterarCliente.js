@@ -9,26 +9,32 @@ formsUm.addEventListener("submit", (evento) => {
       return;
     }
   
+      console.log("cliente", idCliente.value); // verificação OK
     fetch(`http://localhost:8082/consultar-clientes/${idCliente.value}`)
-      .then((response) => response.json())
-      .then((cliente) => {
-        console.log(cliente);
-        //Verificando se cliente existe
-        if (cliente.length === 0) {
-          document.getElementById("resp").textContent = "Cliente não encontrado.";
-          return;
-        }
-        const formsData = document.forms.data;
-        const { idCliente, cpf, nome } = formsData;
-              
-        idCliente.value = cliente.idCliente;
-        cpf.value = cliente.cpf;
-        nome.value = cliente.nome;
-        
-      })
-      .catch((error) => console.log(error));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na requisição. Verifique o URL ou a resposta do servidor.");
+      }
+      return response.json();
+    })
+    .then((cliente) => {
+      console.log(cliente);
+      // Verificando se cliente existe
+      if (!cliente || cliente.length === 0) {
+        document.getElementById("resp").textContent = "Cliente não encontrado.";
+        return;
+      }
+      const formsData = document.forms.data;
+
+      formsData.idCliente.value = cliente.idCliente;
+      formsData.cpf.value = cliente.cpf;
+      formsData.nome.value = cliente.nome;
+    })
+    .catch((error) => console.log(error));
+  
   });
   
+  //! Até aqui tudo lindo
   const salvar = document.getElementById("salvar");
   const formUpdate = document.forms.data;
 
@@ -57,7 +63,7 @@ formsUm.addEventListener("submit", (evento) => {
 
   const json = JSON.stringify(Object.fromEntries(formDataUpdate)); // transforma os dados do formulário em um objeto JSON
 
-  fetch(`http://localhost:8082/clientes/${idCliente}`, {
+  fetch(`http://localhost:8082/clientes/${idCliente.value}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -70,7 +76,11 @@ formsUm.addEventListener("submit", (evento) => {
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => input.value = '');
     document.querySelector('input[name="idCliente"]').focus();  
-    document.getElementById('resp').innerHTML = 'Cliente alterado com sucesso!';
+    let resp = document.getElementById('resp');
+    resp.innerHTML = 'Cliente alterado com sucesso!';
+    setTimeout(() => {
+      resp.style.display = "none";
+    }, 5000); // colocando tempo de visualização de 5000 milissegundos (5 segundos)
 
   })
   .catch(error => {
@@ -78,6 +88,3 @@ formsUm.addEventListener("submit", (evento) => {
     document.getElementById('resp').innerHTML = 'Erro ao alterar cliente';
   });
 });
-
-
-

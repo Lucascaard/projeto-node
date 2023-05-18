@@ -29,7 +29,7 @@ module.exports = {
 
   async readOne(req, res) {
     const { idCliente } = req.params;
-    const cliente = await Cliente.find({idCliente: idCliente});
+    const cliente = await Cliente.findOne({idCliente: idCliente});
     return res.json(cliente);
   },
 
