@@ -22,7 +22,7 @@ module.exports = {
         {
           $group: {
             _id: "$_id",
-            idCliente: { $first: "$idCliente"},
+            idCliente: { $first: "$idCliente" },
             cpf: { $first: "$cpf" },
             nome: { $first: "$nome" },
             vendas: { $push: "$vendas" },

@@ -1,6 +1,6 @@
 const form = document.forms.formDelete;
 
-form.addEventListener('submit', (evento) => {
+form.addEventListener("submit", (evento) => {
   evento.preventDefault();
 
   const { idCliente } = form;
@@ -9,24 +9,25 @@ form.addEventListener('submit', (evento) => {
   fetch(`http://localhost:8082/clientes/${idCliente.value}`, {
     method: "delete",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(json)
+    body: JSON.stringify(json),
   })
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
-        throw new Error('Erro ao deletar cliente');
+        throw new Error("Erro ao deletar cliente");
       }
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       console.log(data);
       idCliente.value = "";
       idCliente.focus();
-      document.getElementById('resp').innerHTML = 'Cliente deletado com sucesso!';
+      document.getElementById("resp").innerHTML =
+        "Cliente deletado com sucesso!";
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
-      document.getElementById('resp').innerHTML = error.message;
+      document.getElementById("resp").innerHTML = "Erro ao deletar!";
     });
 });

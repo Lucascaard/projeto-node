@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.createElement("hr");
         div.appendChild(document.createElement("hr"));
         section.appendChild(div);
-        
-        
       });
     })
     .catch(error => console.log(error));
