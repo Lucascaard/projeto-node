@@ -1,2 +1,2 @@
 # projeto-node
- projeto usando Node.js para criar um servidor e fazer um CRUD
+ projeto usando Node para criar um servidor e JavaScript no front fazer um CRUD 
